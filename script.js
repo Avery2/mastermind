@@ -44,21 +44,14 @@ function addTableRow(elements) {
   let whiteCount = 0;
 
   if (elements) {
-    let redCount = 0;
     for (let i = 0; i < numCol; i++) {
       if (elements?.[i] === answers?.[i]) {
         redCount++;
-      }
-      if (answers?.[i].includes(elements?.[i])) {
+      } else if (answers.includes(elements?.[i])) {
         whiteCount++;
       }
     }
-    redCount = redCount;
   }
-  whiteCount = whiteCount - redCount ?? "-";
-  // if (elements) {
-  //   console.log({ a, b, intersect });
-  // }
 
   data.innerHTML = `${redCount} red ; ${whiteCount} white`;
   row.appendChild(data);
