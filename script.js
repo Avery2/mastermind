@@ -21,7 +21,6 @@ function addTableRow() {
   for (let i = 0; i < 4; i++) {
     const data = document.createElement("td");
     const square = document.createElement("div");
-    // square.innerHTML = `${elements?.[i].value ?? "-"}`;
     square.style = `background-color: ${elements?.[i].value ?? "none"}`;
     square.className = "square";
     data.appendChild(square);
