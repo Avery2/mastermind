@@ -9,7 +9,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Mastermind</h1>
+    <div class="wrapper">
+        <div class="hwrapper">
+            <h1>Mastermind</h1>
+        </div>
     <table id="board">
         <tr>
             <th>1</th>
@@ -32,6 +35,7 @@
             </td>
         </tr>
     </table>
+    <div class="guesswrapper">
     <label>Make guess:</label>
     <div>
         <select name="color-input" id="color-input-1"></select>
@@ -39,11 +43,15 @@
         <select name="color-input" id="color-input-3"></select>
         <select name="color-input" id="color-input-4"></select>
     </div>
+    </div>
+    <div class="buttonwrapperr">
     <button onclick="addTableRowData();">submit</button>
+    </div>
+    <p>Answer:</p>
+    <p id="answer"></p>
+    </div>
 </body>
 <footer>
     <script type="text/javascript" src="script.js"></script>
-    <p>Answer:</p>
-    <p id="answer"></p>
 </footer>
 </html>

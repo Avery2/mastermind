@@ -1,14 +1,94 @@
 html {
     background-color: rgb(227, 220, 220);
 }
+.hwrapper {
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
 
 .square {
-    width: 20px;
-    height: 20px;
+    width: 35px;
+    height: 35px;
     background-color: none;
-    border: 1px solid black;
+    border: 2px solid white;
+    border-radius: 8px;
+    margin: 4px;
 }
 
 .color-input {
     width: 24%;
 }
+body {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: #b5b5b5;
+    height: 100vh;
+    color: white;
+    font-family: helvetica;
+
+}
+
+h1 {
+    margin-bottom: 40px;
+    width: 100%;
+    text-justify: center;
+}
+
+.wrapper {
+    background-color: #3D3D3D;
+    padding: 30px;
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 5px;
+    border-color: white;
+    border-radius: 30px;
+}
+
+button {
+    height: 30px;
+    width: 80px;
+    border: 2px solid white;
+    border-radius: 8px;
+    background-color: #3D3D3D;
+    color: white;
+}
+
+button.active {
+    background-color: white;
+}
+
+.buttonwrapperr {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-items: center;
+    margin: 20px;
+    color: white;
+
+}
+
+.guesswrapper {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: 40px;
+}
+
+select {
+    border: 2px solid white;
+    border-radius: 8px;
+    background-color: #3D3D3D;
+    color: white;
+}
+
+margin-top: 40px;
