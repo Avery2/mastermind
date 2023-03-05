@@ -45,7 +45,7 @@ function addTableRow(elements) {
   const a = new Set(elements);
   const b = new Set(answers);
   let intersect = new Set([...a].filter((i) => b.has(i)));
-  redCount = intersect.size ?? "-";
+  whiteCount = intersect.size ?? "-";
   if (elements) {
     console.log({ a, b, intersect });
   }
