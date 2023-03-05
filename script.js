@@ -2,7 +2,6 @@ console.log("script loaded");
 
 const board = document.getElementById("board");
 const numCol = 4;
-// todo: update answer
 let answers = ["red", "red", "red", "red"];
 const colorSets = ["red", "green", "blue", "pink"];
 populateDropdown("1");
@@ -29,11 +28,38 @@ populateDropdown("a2");
 populateDropdown("a3");
 populateDropdown("a4");
 
+function numOverlapIgnorePosition(arrA, arrB) {
+  let acc = 0;
+  function arrToCountDict(arr) {
+    return [...arr].reduce((cDict, e, i) => {
+      if (cDict?.[e]) {
+        cDict[e] += 1;
+      } else {
+        cDict[e] = 1;
+      }
+      return cDict;
+    }, {});
+  }
+
+  const darrA = arrToCountDict(arrA);
+  const darrB = arrToCountDict(arrB);
+
+  let setA = new Set(arrA);
+  let setB = new Set(arrB);
+
+  for (k of [...[...setA].filter((e) => setB.has(e))]) {
+    acc += Math.min(darrA[k], darrB[k]);
+  }
+  console.log({ arrA, darrA, arrB, darrB });
+
+  return acc;
+}
+
 function addTableRow(elements) {
   if (!elements || elements.length === 0) {
     elements = elements;
   }
-  console.log("addTableRow", `${elements}`);
+  // console.log("addTableRow", `${elements}`);
   const row = document.createElement("tr");
 
   for (let i = 0; i < numCol; i++) {
@@ -56,12 +82,11 @@ function addTableRow(elements) {
   answers = ans_dropdowns.map((e) => e.value);
 
   if (elements) {
-    for (let i = 0; i < numCol; i++) {
+    for (let i = 0; i < answers.length; i++) {
       if (elements?.[i] === answers?.[i]) {
         redCount++;
-      } else if (answers.filter((e, j) => j > i).includes(elements?.[i])) {
-        whiteCount++;
       }
+      whiteCount = numOverlapIgnorePosition(answers, elements) - redCount;
     }
   }
 
