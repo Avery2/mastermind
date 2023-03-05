@@ -2,6 +2,8 @@ console.log("script loaded");
 
 const board = document.getElementById("board");
 const numCol = 4;
+// todo: update answer
+const answers = ["red", "green", "blue", "pink"]
 const colorSets = ["red", "green", "blue", "pink"];
 populateDropdown("1");
 populateDropdown("2");
@@ -33,9 +35,25 @@ function addTableRow(elements) {
     data.appendChild(square);
     row.appendChild(data);
   }
+
+  // note
+  // game logic
   const data = document.createElement("td");
-  data.innerHTML = "-";
+  let redCount = "-";
+  let whiteCount = "-";
+
+  const a = new Set(elements);
+  const b = new Set(answers);
+  let intersect = new Set([...a].filter((i) => b.has(i)));
+  redCount = intersect.size ?? "-";
+  if (elements) {
+    console.log({ a, b, intersect });
+  }
+
+  data.innerHTML = `${redCount} red ; ${whiteCount} white`;
   row.appendChild(data);
+
+  // add to board
   board.appendChild(row);
 }
 
