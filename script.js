@@ -3,7 +3,8 @@ console.log("script loaded");
 const board = document.getElementById("board");
 const numCol = 4;
 // todo: update answer
-const answers = ["red", "green", "blue", "pink"]
+// const answers = ["red", "green", "blue", "pink"]
+const answers = ["red", "red", "red", "pink"]
 const colorSets = ["red", "green", "blue", "pink"];
 populateDropdown("1");
 populateDropdown("2");
@@ -42,22 +43,22 @@ function addTableRow(elements) {
   let redCount = 0;
   let whiteCount = 0;
 
-  const a = new Set(elements);
-  const b = new Set(answers);
-  let intersect = new Set([...a].filter((i) => b.has(i)));
   if (elements) {
-    let acc = 0;
+    let redCount = 0;
     for (let i = 0; i < numCol; i++) {
       if (elements?.[i] === answers?.[i]) {
-        acc++;
+        redCount++;
+      }
+      if (answers?.[i].includes(elements?.[i])) {
+        whiteCount++;
       }
     }
-    redCount = acc;
+    redCount = redCount;
   }
-  whiteCount = intersect.size - redCount ?? "-";
-  if (elements) {
-    console.log({ a, b, intersect });
-  }
+  whiteCount = whiteCount - redCount ?? "-";
+  // if (elements) {
+  //   console.log({ a, b, intersect });
+  // }
 
   data.innerHTML = `${redCount} red ; ${whiteCount} white`;
   row.appendChild(data);
@@ -107,6 +108,10 @@ function populateTable() {
   for (let index = 0; index < maxNumRows; index++) {
     addTableRow(positions?.[index]);
   }
+
+  const ans = document.getElementById("answer");
+  ans.innerHTML = `${answers}`;
+  ans.style = `color: ${document.body.style.backgroundColor}`;
 }
 
 populateTable();
