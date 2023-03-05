@@ -59,11 +59,7 @@ function addTableRow(elements) {
     for (let i = 0; i < numCol; i++) {
       if (elements?.[i] === answers?.[i]) {
         redCount++;
-        // } else if (answers.includes(elements?.[i])) {
-      } else if (
-        // todo: bug -- Make guess: red green blue pink | ans pink blue red blue | undercounts whites
-        answers.filter((e) => e === elements?.[i]).length > i
-      ) {
+      } else if (answers.filter((e, j) => j > i).includes(elements?.[i])) {
         whiteCount++;
       }
     }
