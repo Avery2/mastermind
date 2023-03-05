@@ -3,8 +3,7 @@ console.log("script loaded");
 const board = document.getElementById("board");
 const numCol = 4;
 // todo: update answer
-// const answers = ["red", "green", "blue", "pink"]
-const answers = ["red", "red", "red", "pink"]
+let answers = ["red", "red", "red", "red"];
 const colorSets = ["red", "green", "blue", "pink"];
 populateDropdown("1");
 populateDropdown("2");
@@ -18,6 +17,17 @@ const dd4 = document.getElementById("color-input-4");
 
 const elements = [dd1, dd2, dd3, dd4];
 const dropdowns = [dd1, dd2, dd3, dd4];
+
+const add1 = document.getElementById("color-input-a1");
+const add2 = document.getElementById("color-input-a2");
+const add3 = document.getElementById("color-input-a3");
+const add4 = document.getElementById("color-input-a4");
+const ans_dropdowns = [add1, add2, add3, add4];
+
+populateDropdown("a1");
+populateDropdown("a2");
+populateDropdown("a3");
+populateDropdown("a4");
 
 function addTableRow(elements) {
   if (!elements || elements.length === 0) {
@@ -43,11 +53,17 @@ function addTableRow(elements) {
   let redCount = 0;
   let whiteCount = 0;
 
+  answers = ans_dropdowns.map((e) => e.value);
+
   if (elements) {
     for (let i = 0; i < numCol; i++) {
       if (elements?.[i] === answers?.[i]) {
         redCount++;
-      } else if (answers.includes(elements?.[i])) {
+        // } else if (answers.includes(elements?.[i])) {
+      } else if (
+        // todo: bug -- Make guess: red green blue pink | ans pink blue red blue | undercounts whites
+        answers.filter((e) => e === elements?.[i]).length > i
+      ) {
         whiteCount++;
       }
     }
@@ -61,6 +77,7 @@ function addTableRow(elements) {
 }
 
 function populateDropdown(index) {
+  console.log(`color-input-${index}`);
   const dropdown = document.getElementById(`color-input-${index}`);
   for (let i = 0; i < numCol; i++) {
     const newOption = document.createElement("option");
@@ -84,6 +101,15 @@ function addTableRowData() {
   console.log({ positions });
 }
 
+function showHideButton() {
+  const answer = document.getElementById("answer-cont");
+  if (answer.style.visibility === "hidden") {
+    answer.style.visibility = "visible";
+  } else {
+    answer.style.visibility = "hidden";
+  }
+}
+
 function populateTable() {
   // reset
   board.replaceChildren();
@@ -102,9 +128,7 @@ function populateTable() {
     addTableRow(positions?.[index]);
   }
 
-  const ans = document.getElementById("answer");
-  ans.innerHTML = `${answers}`;
-  ans.style = `color: ${document.body.style.backgroundColor}`;
+  answers = ans_dropdowns.map((e) => e.value);
 }
 
 populateTable();

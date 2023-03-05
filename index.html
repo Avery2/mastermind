@@ -13,42 +13,51 @@
         <div class="hwrapper">
             <h1>Mastermind</h1>
         </div>
-    <table id="board">
-        <tr>
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-        </tr>
-        <tr>
-            <td>
-                <div class="square"></div>
-            </td>
-            <td>
-                <div class="square"></div>
-            </td>
-            <td>
-                <div class="square"></div>
-            </td>
-            <td>
-                <div class="square"></div>
-            </td>
-        </tr>
-    </table>
-    <div class="guesswrapper">
-    <label>Make guess:</label>
-    <div>
-        <select name="color-input" id="color-input-1"></select>
-        <select name="color-input" id="color-input-2"></select>
-        <select name="color-input" id="color-input-3"></select>
-        <select name="color-input" id="color-input-4"></select>
-    </div>
-    </div>
-    <div class="buttonwrapperr">
-    <button onclick="addTableRowData();">submit</button>
-    </div>
-    <p>Answer:</p>
-    <p id="answer"></p>
+        <table id="board">
+            <tr>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="square"></div>
+                </td>
+                <td>
+                    <div class="square"></div>
+                </td>
+                <td>
+                    <div class="square"></div>
+                </td>
+                <td>
+                    <div class="square"></div>
+                </td>
+            </tr>
+        </table>
+        <div class="guesswrapper">
+            <label>Make guess:</label>
+            <div>
+                <select name="color-input" id="color-input-1"></select>
+                <select name="color-input" id="color-input-2"></select>
+                <select name="color-input" id="color-input-3"></select>
+                <select name="color-input" id="color-input-4"></select>
+            </div>
+        </div>
+        <div class="buttonwrapperr">
+            <button onclick="addTableRowData();">submit</button>
+        </div>
+        <p>Answer:</p>
+        <button onclick="showHideButton();">show hide amns</button>
+
+        <div id="answer-cont">
+            <div>
+                <select name="color-input" id="color-input-a2"></select>
+                <select name="color-input" id="color-input-a1"></select>
+                <select name="color-input" id="color-input-a3"></select>
+                <select name="color-input" id="color-input-a4"></select>
+            </div>
+        </div>
     </div>
 </body>
 <footer>
