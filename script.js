@@ -39,13 +39,22 @@ function addTableRow(elements) {
   // note
   // game logic
   const data = document.createElement("td");
-  let redCount = "-";
-  let whiteCount = "-";
+  let redCount = 0;
+  let whiteCount = 0;
 
   const a = new Set(elements);
   const b = new Set(answers);
   let intersect = new Set([...a].filter((i) => b.has(i)));
-  whiteCount = intersect.size ?? "-";
+  if (elements) {
+    let acc = 0;
+    for (let i = 0; i < numCol; i++) {
+      if (elements?.[i] === answers?.[i]) {
+        acc++;
+      }
+    }
+    redCount = acc;
+  }
+  whiteCount = intersect.size - redCount ?? "-";
   if (elements) {
     console.log({ a, b, intersect });
   }
