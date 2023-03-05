@@ -1,6 +1,7 @@
 console.log("script loaded");
 
 const board = document.getElementById("board");
+const numCol = 4;
 const colorSets = ["red", "green", "blue", "pink"];
 populateDropdown("1");
 populateDropdown("2");
@@ -22,7 +23,7 @@ function addTableRow(elements) {
   console.log("addTableRow", `${elements}`);
   const row = document.createElement("tr");
 
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < numCol; i++) {
     const data = document.createElement("td");
     const square = document.createElement("div");
     square.style = `background-color: ${
@@ -32,12 +33,15 @@ function addTableRow(elements) {
     data.appendChild(square);
     row.appendChild(data);
   }
+  const data = document.createElement("td");
+  data.innerHTML = "-";
+  row.appendChild(data);
   board.appendChild(row);
 }
 
 function populateDropdown(index) {
   const dropdown = document.getElementById(`color-input-${index}`);
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < numCol; i++) {
     const newOption = document.createElement("option");
     newOption.innerHTML = colorSets?.[i];
     newOption.value = colorSets?.[i];
@@ -51,7 +55,7 @@ const positions = [];
 
 function addTableRowData() {
   positions.push([]);
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < numCol; i++) {
     positions?.[positions?.length - 1].push(dropdowns?.[i].value);
   }
   console.log("addTableRowData" + `${positions[positions.length - 1]}`);
@@ -63,11 +67,14 @@ function populateTable() {
   // reset
   board.replaceChildren();
   const header = document.createElement("tr");
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < numCol; i++) {
     const data = document.createElement("th");
     data.innerHTML = i;
     header.appendChild(data);
   }
+  const data = document.createElement("th");
+  data.innerHTML = "notes";
+  header.appendChild(data);
 
   board.appendChild(header);
   for (let index = 0; index < maxNumRows; index++) {
