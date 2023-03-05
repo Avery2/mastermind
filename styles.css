@@ -1,0 +1,14 @@
+html {
+    background-color: rgb(227, 220, 220);
+}
+
+.square {
+    width: 20px;
+    height: 20px;
+    background-color: none;
+    border: 1px solid black;
+}
+
+.color-input {
+    width: 24%;
+}
